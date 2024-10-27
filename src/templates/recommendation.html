@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spotify Recommender</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/recommendation.css') }}">
+</head>
+
+<body>
+    <h1>{{ title }} by {{ artistName }}</h1>
+    <h2><a href="{{spotifyLink}}">{{ spotifyLink }}</a></h2>
+    <img src="{{ imageLink }}" height="{{ imageHeight }}" width="{{ imageWidth }}">
+
+    <form method="POST" action="/recommendSubmit">
+        <input type="hidden" name="genre" value="{{ genre }}">
+        <input type="hidden" name="useSong" value="{{ useSong }}">
+        <input type="hidden" name="popularity" value="{{ popularity }}">
+        <button type="submit" class="shuffle-button">Shuffle</button>
+    </form>
+
+    <form method="GET" action="/">
+        <button type="submit" class="back-button">Back Home</button>
+    </form>
+</body>
+
+</html>

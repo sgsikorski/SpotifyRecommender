@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spotify Recommender</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/recommend.css') }}">
+</head>
+
+<body>
+    <form action="/recommendSubmit" method="post">
+        <h1>Album/Song Recommendation</h1>
+
+        {% if error %}
+        <p class="error">{{ error }}</p>
+        {% endif %}
+
+        {% if available_genres %}
+        <div class="flex-container">
+            <div class="genre-container">
+                <label for="genre">Choose a genre:</label>
+                <select name="genre" id="genre">
+                    <option value="">--Select a genre--</option>
+                    {% for genre in available_genres %}
+                    <option value="{{ genre }}">{{ genre }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <div class="checkbox-container">
+                <label for="useSong">Song?</label>
+                <input type="checkbox" id="useSong" name="useSong" value="useSong">
+            </div>
+        </div>
+        {% endif %}
+
+        <label for="popularity">Popularity:</label>
+        <input type="number" id="popularity" name="popularity" placeholder="Popularity" min="0" max="100">
+
+        <button type="submit">Submit</button>
+    </form>
+</body>
+
+</html>
