@@ -10,8 +10,10 @@
 
 <body>
     <h1>{{ title }} by {{ artistName }}</h1>
+    <a href="{{spotifyLink}}">
+        <img src="{{ imageLink }}" height="{{ imageHeight }}" width="{{ imageWidth }}">
+    </a>
     <h2><a href="{{spotifyLink}}">{{ spotifyLink }}</a></h2>
-    <img src="{{ imageLink }}" height="{{ imageHeight }}" width="{{ imageWidth }}">
 
     <form method="POST" action="/recommendSubmit">
         <input type="hidden" name="genre" value="{{ genre }}">
