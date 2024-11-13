@@ -17,7 +17,11 @@
 
     <form method="POST" action="/recommendSubmit">
         <input type="hidden" name="genre" value="{{ genre }}">
-        <input type="hidden" name="useSong" value="{{ useSong }}">
+        {% if useSong %}
+        <input type="hidden" name="useSong" value="True">
+        {% else %}
+        <input type="hidden" name="useSong" value="False">
+        {% endif %}
         <input type="hidden" name="popularity" value="{{ popularity }}">
         <button type="submit" class="shuffle-button">Shuffle</button>
     </form>
